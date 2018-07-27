@@ -9,6 +9,7 @@ var client = new Client({
 	user: 'olnlnpdigamris',
 	password: 'a62e045839dfb4785622cd9f61312f5727ab1148f3b752672fa306504750b8e5',
 	host: 'ec2-23-23-242-163.compute-1.amazonaws.com',
+	ssl: true,
 	port: 5432
  });
 
