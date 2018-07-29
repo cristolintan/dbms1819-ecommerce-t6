@@ -79,7 +79,19 @@ app.get('/products', (req, res) => {
 app.get('/login', function(req, res) {
 	res.render('login');
 });
-app.get('/products/{product_id}', function(req, res) {
+app.get('/products/1', function(req, res) {
+	return client.query('SELECT {product_id} FROM productsdb;')
+	.then((results) =>{
+		console.log('results?', results);
+		res.render('productdetail', results);
+		
+	})
+	.catch((err) => {
+		console.log('error', err);
+		res.send('Error!');
+	});
+});
+app.get('/products/2', function(req, res) {
 	return client.query('SELECT {product_id} FROM productsdb;')
 	.then((results) =>{
 		console.log('results?', results);
