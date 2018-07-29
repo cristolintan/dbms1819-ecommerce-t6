@@ -56,7 +56,7 @@ app.get('/member/Benz', function(req, res) {
 			email: 'benz.matias13@gmail.com',
 			phone: '09398070460',
 			imageurl: '/images/image_benz.jpg',
-			hobbies: ['Eat', 'Sleep', 'Repeat'],
+			hobbies: ['Read Manga/Manhwa/Manhua', 'Computer Games'],
 			background: '/images/grid.gif'
 		});
 });
