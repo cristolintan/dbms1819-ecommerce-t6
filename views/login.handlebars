@@ -35,7 +35,9 @@
 </html>
 
 <script>
-function alertFunction() {
-    alert("Warning! This page is only for viewing and only a template. This page is OFFLINE");
+	$('body').on('load', function () { alert('body'); });
+    $(window).on('load', function () { 
+	alert('Warning! This page is only for viewing and only a template. This page is OFFLINE.'); 
+	});
 }
 </script>
