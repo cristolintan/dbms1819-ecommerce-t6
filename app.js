@@ -33,8 +33,6 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 //Set Default extension .handlebars
 app.set('view engine', 'handlebars');
 
-app.use('/favicon.ico', express.static('/favicon.ico'));
-
 app.get('/', function(req, res) {
 	res.render('home');
 });
