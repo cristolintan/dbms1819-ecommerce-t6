@@ -73,6 +73,11 @@ app.get('/products', (req, res) => {
 	});
 });
 
+app.get('/login', (req, res) => {
+
+	res.render('login')
+});
+
 
 //Server
 app.listen(port, function(){
