@@ -77,6 +77,10 @@ app.get('/products', (req, res) => {
 app.get('/login', function(req, res) {
 	res.render('login');
 });
+app.get(function(req, res) {
+	return client.query('SELECT * FROM productsdb;')
+	res.render('productdetail');
+});
 
 
 //Server
