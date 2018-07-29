@@ -20,24 +20,24 @@ th {
 			<th style="width:20%">Picture</th>
 		</thead>
 
-		{{#rows}}
+		{{#each}}
 			<tr>
 				<div class="row">
 					<div class="col-sm-3">
 					  <p>Some text..</p>
-					  <img src="{{picture}}" class="img-responsive" href="/products/{{product_id}}" style="width:100%" alt="Image">
+					  <a href="/products/{{product_id}}" ><img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image"></a>
 					</div>
 					<div class="col-sm-3"> 
 					  <p>Some text..</p>
-					  <img src="{{picture}}" class="img-responsive" href="/products/{{product_id}}" style="width:100%" alt="Image">
+					  <a href="/products/{{product_id}}" ><img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image"></a>
 					</div>
 					<div class="col-sm-3"> 
 					  <p>Some text..</p>
-					  <img src="{{picture}}" class="img-responsive" href="/products/{{product_id}}" style="width:100%" alt="Image">
+					  <a href="/products/{{product_id}}" ><img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image"></a>
 					</div>
 					<div class="col-sm-3">
 					  <p>Some text..</p>
-					  <img src="{{picture}}" class="img-responsive" href="/products/{{product_id}}" style="width:100%" alt="Image">
+					  <a href="/products/{{product_id}}" ><img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image"></a>
 					</div>
 				  </div>
 				</div><br>
@@ -59,7 +59,7 @@ th {
 				 -->
 
 			<tr>
-		{{/rows}}
+		{{/each}}
 
 		<tbody>
 
