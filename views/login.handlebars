@@ -13,6 +13,12 @@
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
+	<script>
+		$('body').on('load', function () { alert('body'); });
+		$(window).on('load', function () { 
+		alert('Warning! This page is only for viewing and only a template. This page is OFFLINE.'); 
+		});
+	</script>
   </head>
 
   <body class="text-center">
@@ -34,10 +40,3 @@
   </body>
 </html>
 
-<script>
-	$('body').on('load', function () { alert('body'); });
-    $(window).on('load', function () { 
-	alert('Warning! This page is only for viewing and only a template. This page is OFFLINE.'); 
-	});
-}
-</script>
