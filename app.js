@@ -33,6 +33,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 //Set Default extension .handlebars
 app.set('view engine', 'handlebars');
 
+app.use('/favicon.ico', express.static('images/favicon.ico'));
 
 app.get('/', function(req, res) {
 		res.render('home');
@@ -73,9 +74,8 @@ app.get('/products', (req, res) => {
 	});
 });
 
-app.get('/login', (req, res) => {
-
-	res.render('login', results);
+app.get('/login', (req, res) {
+	res.render('login');
 });
 
 
