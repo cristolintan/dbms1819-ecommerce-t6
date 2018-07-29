@@ -72,6 +72,7 @@ app.get('/products', (req, res) => {
 		console.log('error', err);
 		res.send('Error!');
 	});
+	client.end();
 });
 
 app.get('/login', function(req, res) {
@@ -88,6 +89,7 @@ app.get('/products/{{product_id}}', function(req, res) => {
 		console.log('error', err);
 		res.send('Error!');
 	});
+	client.end();
 });
 
 
