@@ -33,10 +33,10 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 //Set Default extension .handlebars
 app.set('view engine', 'handlebars');
 
-app.use('/favicon.ico', express.static('images/favicon.ico'));
+app.use('/favicon.ico', express.static('/favicon.ico'));
 
 app.get('/', function(req, res) {
-		res.render('home');
+	res.render('home');
 });
 
 app.get('/member/Gerald', function(req, res) {
@@ -74,7 +74,7 @@ app.get('/products', (req, res) => {
 	});
 });
 
-app.get('/login', (req, res) {
+app.get('/login', function(req, res) {
 	res.render('login');
 });
 
