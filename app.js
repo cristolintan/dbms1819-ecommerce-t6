@@ -78,7 +78,7 @@ app.get('/login', function(req, res) {
 	res.render('login');
 });
 app.get('/products/{product_id}', function(req, res) {
-	return client.query('SELECT * FROM productsdb;')
+	return client.query('SELECT {product_id} FROM productsdb;')
 	.then((results) =>{
 		console.log('results?', results);
 		res.render('productdetail', results);
