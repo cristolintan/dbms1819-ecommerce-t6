@@ -1,3 +1,22 @@
-<ul >
-{{productsdb.product_id}}
-</ul>
+{{#rows}}
+			<tr>
+				
+
+				<td>{{product_id}}</td>
+
+				<td>{{product_name}}</td>	
+
+				<td>{{product_type}}</td>
+
+				<td>{{product_description}}</td>
+
+				<td>{{brand}}</td>
+				
+				<td>{{price}}</td>
+				
+				<td><img src="{{picture}}" width="300px" height="300px"></td>
+
+				
+
+			<tr>
+		{{/rows}}
