@@ -39,21 +39,25 @@ app.get('/', function(req, res) {
 
 app.get('/member/Gerald', function(req, res) {
 		res.render('member',{
+			title: 'Profile Page of Gerald',
 			name: 'Gerald T. Mabandos',
 			email: 'gmabandos@gmail.com',
 			phone: '09201121171',
-			imageurl: '/images/gerald.jpg',
-			hobbies: ['Basketball', 'Computer Games']
+			imageurl: '/images/image_gerald.jpg',
+			hobbies: ['Basketball', 'Computer Games'],
+			background: '/images/background.jpg'
 		});
 });
 
 app.get('/member/Benz', function(req, res) {
 		res.render('member',{
+			title: 'Profile Page of Benz',
 			name: 'Benjamin F. Matias',
 			email: 'benz.matias13@gmail.com',
 			phone: '09398070460',
-			imageurl: '/images/benz.JPG',
-			hobbies: ['Reading Manga', 'Computer Games']
+			imageurl: '/images/image_benz.jpg',
+			hobbies: ['Eat', 'Sleep', 'Repeat'],
+			background: '/images/grid.gif'
 		});
 });
 
