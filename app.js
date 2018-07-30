@@ -63,16 +63,14 @@ app.get('/member/Benz', function(req, res) {
 
 app.get('/', (req, res) => {
 
-	return client.query('SELECT * FROM productsdb;')
-
-	.then((results) =>{
-		console.log('results?', results);
-		res.render('products', results);
-		
-	})
-	.catch((err) => {
-		console.log('error', err);
-		res.send('Error!');
+	client.query('SELECT * FROM productsdb;', (req, data)=>{
+		var list = [];
+		for (var i = 0; i < data.rows.length; i++) {
+			list.push(data.rows[i]);
+		}
+		res.render('products',{
+			data: list
+		});
 	});
 });
 
