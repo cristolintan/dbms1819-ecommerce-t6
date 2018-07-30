@@ -29,18 +29,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand mb-0 h1" href="/"><img src="/images/teamsix.png" alt="Team 6" width="50px" height="50px" class="d-inline-block align-top" padding="0px"></a>
+      <a class="navbar-brand mb-0 h1" href="/"><img src="/images/teamsix.png" alt="Team 6" height="50px" class="d-inline-block align-top"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="/member/Benz">Benjamin</a></li>
-        <li><a href="/member/Gerald">Gerald</a></li>
-		<li><a href="/Products">Products</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/member/Benz">Benjamin</a>
+        <a class="nav-item nav-link" href="/member/Gerald">Gerald</a>
+		<a class="nav-item nav-link" href="/Products">Products</a>
+      </div>
+      <div class="nav navbar-nav navbar-right">
+        <a class="nav-item nav-link" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -51,9 +51,7 @@
     {{{body}}}
 
 </body>
-<div>
-<footer class="foot">
+<nav class="navbar fixed-bottom navbar-light bg-light">
 	<p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
-</footer>
-</div>
+</nav>
 </html>
