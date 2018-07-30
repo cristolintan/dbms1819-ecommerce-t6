@@ -79,7 +79,7 @@ app.get('/', (req, res) => {
 app.get('/login', function(req, res) {
 	res.render('login');
 });
-app.get('/products/1', function(req, res) {
+app.get('/products/id', function(req, res) {
 	return client.query('SELECT * FROM productsdb;')
 	.then((results) =>{
 		console.log('results?', results);
