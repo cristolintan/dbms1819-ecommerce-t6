@@ -7,25 +7,33 @@ th {
 }
 </style>
 <h1>{{title}}</h1>
-<ul>
-
-	<table style="width:100%">
-		{{#rows}}
-			<tr>
-				<div class="row">
-					<div class="col-sm-3">
-					  <p>{{product_name}}</p>
-					  <a href="/products/{{product_id}}" ><img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image"></a>
-					</div>
-				  </div>
-				</div><br>
-
-			<tr>
-		{{/rows}}
-
-		<tbody>
-
-		</tbody>
-	</table>
-
-</ul>
+<body>
+	<div class="container">
+		<div class="row mx-4">
+			<div class="col-lg-4 col-md-4 col-sm-12 mb-4 mx-auto">
+				<div class="card bg-secondary text-light center">
+					<ul>
+						<table style="width:100%">
+							{{#rows}}
+								<tr>
+									<div class="row">
+										<div class="col-sm-3">
+										  <p>{{product_name}}</p>
+											<a href="/products/{{product_id}}" >
+												<img src="{{picture}}" class="img-responsive" style="width:100%" alt="Image">
+												<div class="">
+													<h6 class="card-title text-center my-3">{{product_name}}</h5>
+												</div>
+											</a>
+										</div>
+									  </div>
+									</div><br>
+								<tr>
+							{{/rows}}
+						</table>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
