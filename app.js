@@ -73,7 +73,7 @@ app.get('/', (req, res) => {
 		for (var i = 0; i < data.rows.length; i++) {
 			list.push(data.rows[i]);
 		}
-		res.render('products',{
+		res.render('home',{
 			data: list
 		});
 	});
