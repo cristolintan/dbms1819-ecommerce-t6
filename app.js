@@ -37,6 +37,9 @@ app.set('view engine', 'handlebars');
 	res.render('products');
 });
  */
+ app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.get('/member/Gerald', function(req, res) {
 		res.render('member',{
 			title: 'Profile Page of Gerald',
@@ -73,6 +76,35 @@ app.get('/', (req, res) => {
 		});
 	});
 });
+app.get('/products/:id', (req,res)=>{
+	var id = req.params.id;
+	client.query('SELECT * FROM productsdb', (req, data)=>{
+		var list = [];
+		for (var i = 0; i < data.rows.length+1; i++) {
+			if (i==id) {
+				list.push(data.rows[i-1]);
+			}
+		}
+		res.render('products',{
+			data: list
+		});
+	});
+});
+
+app.post('/products/:id/send', function(req, res) {
+	console.log(req.body);
+	var id = req.params.id;
+	const output = `
+		<p>You have a new contact request</p>
+		<h3>Contact Details</h3>
+		<ul>
+			<li>Customer Name: ${req.body.name}</li>
+			<li>Phone: ${req.body.phone}</li>
+			<li>Email: ${req.body.email}</li>
+			<li>Product ID: ${req.body.productid}</li>
+			<li>Quantity: ${req.body.quantity}</li>
+		</ul>
+	`;
 
 app.get('/login', function(req, res) {
 	res.render('login');
