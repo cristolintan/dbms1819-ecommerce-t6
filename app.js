@@ -33,10 +33,10 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 //Set Default extension .handlebars
 app.set('view engine', 'handlebars');
 
-app.get('/', function(req, res) {
+/* app.get('/', function(req, res) {
 	res.render('products');
 });
-
+ */
 app.get('/member/Gerald', function(req, res) {
 		res.render('member',{
 			title: 'Profile Page of Gerald',
@@ -61,7 +61,7 @@ app.get('/member/Benz', function(req, res) {
 		});
 });
 
-app.get('/products', (req, res) => {
+app.get('/', (req, res) => {
 
 	return client.query('SELECT * FROM productsdb;')
 
