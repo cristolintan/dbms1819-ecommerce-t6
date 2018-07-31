@@ -66,7 +66,7 @@ app.get('/member/Benz', function(req, res) {
 		});
 });
 
-app.get('/', (req, res) => {
+app.get('/products', (req, res) => {
 
 	client.query('SELECT * FROM products;', (req, data)=>{
 		var list = [];
@@ -87,7 +87,7 @@ app.get('/products/:id', (req,res)=>{
 				list.push(data.rows[i-1]);
 			}
 		}
-		res.render('products',{
+		res.render('productdetails',{
 			data: list
 		});
 	});
