@@ -87,7 +87,7 @@ app.get('/products/:id', (req,res)=>{
 				list.push(data.rows[i-1]);
 			}
 		}
-		res.render('productdetails',{
+		res.render('productdetail',{
 			data: list
 		});
 	});
