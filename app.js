@@ -68,19 +68,19 @@ app.get('/member/Benz', function(req, res) {
 
 app.get('/', (req, res) => {
 
-	client.query('SELECT * FROM productsdb;', (req, data)=>{
+	client.query('SELECT * FROM products;', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
 			list.push(data.rows[i]);
 		}
-		res.render('home',{
+		res.render('products',{
 			data: list
 		});
 	});
 });
 app.get('/products/:id', (req,res)=>{
 	var id = req.params.id;
-	client.query('SELECT * FROM productsdb', (req, data)=>{
+	client.query('SELECT * FROM products', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length+1; i++) {
 			if (i==id) {
@@ -110,30 +110,6 @@ app.post('/products/:id/send', function(req, res) {
 
 app.get('/login', function(req, res) {
 	res.render('login');
-});
-app.get('/products/id', function(req, res) {
-	return client.query('SELECT * FROM productsdb;')
-	.then((results) =>{
-		console.log('results?', results);
-		res.render('productdetail', results);
-		
-	})
-	.catch((err) => {
-		console.log('error', err);
-		res.send('Error!');
-	});
-});
-app.get('/products/2', function(req, res) {
-	return client.query('SELECT product_id FROM productsdb;')
-	.then((results) =>{
-		console.log('results?', results);
-		res.render('productdetail', results);
-		
-	})
-	.catch((err) => {
-		console.log('error', err);
-		res.send('Error!');
-	});
 });
 
 
