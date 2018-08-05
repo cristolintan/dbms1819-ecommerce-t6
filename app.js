@@ -138,7 +138,7 @@ app.get('/login', function(req, res) {
         }
         console.log('Message sent: %s', info.messageId);
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
+		
         client.query('SELECT * FROM products', (req, data)=>{
 			var list = [];
 			for (var i = 0; i < data.rows.length+1; i++) {
