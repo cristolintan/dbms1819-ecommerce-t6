@@ -107,7 +107,7 @@ app.post('/products/:id/send', function(req, res) {
 			<li>Customer Name: ${req.body.name}</li>
 			<li>Phone: ${req.body.phone}</li>
 			<li>Email: ${req.body.email}</li>
-			<li>Product ID: ${req.body.productid}</li>
+			<li>Product Name: ${req.body.product_name}</li>
 			<li>Quantity: ${req.body.quantity}</li>
 		</ul>
 `;
