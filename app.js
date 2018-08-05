@@ -68,26 +68,26 @@ app.get('/member/Benz', function(req, res) {
 
 app.get('/', (req, res) => {
 
-	client.query('SELECT * FROM productsdb;', (req, data)=>{
+	client.query('SELECT * FROM products;', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
 			list.push(data.rows[i]);
 		}
-		res.render('home',{
+		res.render('products',{
 			data: list
 		});
 	});
 });
 app.get('/products/:id', (req,res)=>{
 	var id = req.params.id;
-	client.query('SELECT * FROM productsdb', (req, data)=>{
+	client.query('SELECT * FROM products', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length+1; i++) {
 			if (i==id) {
 				list.push(data.rows[i-1]);
 			}
 		}
-		res.render('products',{
+		res.render('productdetail',{
 			data: list
 		});
 	});
@@ -111,6 +111,7 @@ app.post('/products/:id/send', function(req, res) {
 app.get('/login', function(req, res) {
 	res.render('login');
 });
+<<<<<<< HEAD
 
 //nodemailer
 	let transporter = nodemailer.createTransport({
@@ -151,7 +152,6 @@ app.get('/login', function(req, res) {
 			});
 		});
      });
-});
 
 
 //Server
