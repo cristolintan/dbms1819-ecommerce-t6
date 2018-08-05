@@ -111,29 +111,46 @@ app.post('/products/:id/send', function(req, res) {
 app.get('/login', function(req, res) {
 	res.render('login');
 });
-app.get('/products/id', function(req, res) {
-	return client.query('SELECT * FROM productsdb;')
-	.then((results) =>{
-		console.log('results?', results);
-		res.render('productdetail', results);
-		
-	})
-	.catch((err) => {
-		console.log('error', err);
-		res.send('Error!');
-	});
-});
-app.get('/products/2', function(req, res) {
-	return client.query('SELECT product_id FROM productsdb;')
-	.then((results) =>{
-		console.log('results?', results);
-		res.render('productdetail', results);
-		
-	})
-	.catch((err) => {
-		console.log('error', err);
-		res.send('Error!');
-	});
+
+//nodemailer
+	let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'geraldbenjamin.theexpertcoding@gmail.com', 
+            pass: 'gerald_benjamin' 
+        }
+    });
+
+    let mailOptions = {
+        from: '"T6 Mailer" <geraldbenjamin.theexpertcoding@gmail.com>',
+        to: 'benz.matias13@gmail.com, gmabandos@gmail.com',
+        subject: 'T6 Contact Request',
+        //text: req.body.name,
+        html: output
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+        client.query('SELECT * FROM productsdb', (req, data)=>{
+			var list = [];
+			for (var i = 0; i < data.rows.length+1; i++) {
+				if (i==id) {
+					list.push(data.rows[i-1]);
+				}
+			}
+			res.render('products',{
+				data: list,
+				msg: '---Email has been sent---'
+			});
+		});
+     });
 });
 
 
