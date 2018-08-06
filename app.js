@@ -98,15 +98,14 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/brands', function(req, res) {
-	client.query('SELECT * FROM brands;', (req, data)=>{
-		.then((result)=>{
-			console.log('results?', result);
-			res.render('list_brand', result);
-		})
-		.catch((err) => {
-			console.log('error',err);
-			res.send('Error!');
-		});
+	client.query('SELECT * FROM brands;', (req, data)=>
+	.then((result)=>{
+		console.log('results?', result);
+		res.render('list_brand', result);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
 	});
 });
 
