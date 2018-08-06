@@ -98,7 +98,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/brands', function(req, res) {
-	client.query('SELECT * FROM brands;', (req, data)=>
+	client.query('SELECT * FROM brands')
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_brand', result);
