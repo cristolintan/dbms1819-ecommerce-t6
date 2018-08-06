@@ -3,6 +3,7 @@ var path = require('path');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+var config = require('./config.js');
 var	port = process.env.PORT || 3000
 var { Client } = require('pg');
 
