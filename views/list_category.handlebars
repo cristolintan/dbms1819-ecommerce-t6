@@ -1,1 +1,19 @@
-a
+<div class="container">
+	<div class="row">
+		{{#each rows}}		
+		<div class="responsive">
+			<div class="container col-lg-12" style="margin-top: 25pt; width: 420pt; margin-right: 18pt" >
+				<h2>Category List</h2>
+				<p style="color: black" readonly>{{this.category}}</p>
+			</div>
+		</div>		
+		{{/each}}
+	</div>
+	<div class="row">
+		<div class="col-lg-12 text-center" style="margin-top: 25pt">
+			<div class="text-center">
+				<a href="/brand"><button class="btn btn-primary btn-lg" title="Submit">ADD</button></a>
+			</div>
+		</div>
+	</div>
+</div>

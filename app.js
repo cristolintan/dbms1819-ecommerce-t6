@@ -122,6 +122,27 @@ app.post('/brand/create', function(req, res) {
 	res.redirect('/brands');
 })
 
+app.get('/categories', function(req, res) {
+	client.query('SELECT * FROM products_category')
+	.then((result)=>{
+		console.log('results?', result);
+		res.render('list_category', result);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+});
+
+app.get('/category', function(req, res) {
+	res.render('create_category');
+});
+
+app.post('/category/create', function(req, res) {
+	client.query("INSERT INTO categories (category) VALUES ('"+req.body.category+"')");
+	res.redirect('/categories');
+})
+
 app.post('/products/:id/send', function(req, res) {
 	console.log(req.body);
 	var id = req.params.id;
