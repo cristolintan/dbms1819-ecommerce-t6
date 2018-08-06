@@ -97,6 +97,27 @@ app.get('/login', function(req, res) {
 	res.render('login');
 });
 
+app.get('/brands', function(req, res) {
+	client.query('SELECT * FROM brands;', (req, data)=>{
+		var list = [];
+		for (var i = 0; i < data.rows.length; i++) {
+			list.push(data.rows[i]);
+		}
+		res.render('brands',{
+			data: list
+		});
+	});
+});
+
+app.get('/brand', function(req, res) {
+	res.render('create_brand');
+});
+
+app.post('/brand/create', function(req, res) {
+	client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('"+req.body.brand_name+"','"+req.body.brand_description+"')");
+	res.redirect('/brands');
+})
+
 app.post('/products/:id/send', function(req, res) {
 	console.log(req.body);
 	var id = req.params.id;
@@ -127,7 +148,7 @@ app.post('/products/:id/send', function(req, res) {
 
     let mailOptions = {
         from: '"T6 Mailer" <geraldbenjamin.theexpertcoding@gmail.com>',
-        to: 'benz.matias13@gmail.com, gmabandos@gmail.com',
+        to: 'benz.matias13@gmail.com, gmabandos@gmail.com, ${req.body.email}',
         subject: 'T6 Contact Request',
         //text: req.body.name,
         html: output
