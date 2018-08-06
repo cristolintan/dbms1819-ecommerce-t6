@@ -99,12 +99,13 @@ app.get('/login', function(req, res) {
 
 app.get('/brands', function(req, res) {
 	client.query('SELECT * FROM brands;', (req, data)=>{
-		var list = [];
-		for (var i = 0; i < data.rows.length; i++) {
-			list.push(data.rows[i]);
-		}
-		res.render('brands',{
-			data: list
+		.then((result)=>{
+			console.log('results?', result);
+			res.render('list_brand', result);
+		})
+		.catch((err) => {
+			console.log('error',err);
+			res.send('Error!');
 		});
 	});
 });
