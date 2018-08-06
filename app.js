@@ -71,7 +71,6 @@ app.get('/member/Benz', function(req, res) {
 });
 
 app.get('/', (req, res) => {
-
 	client.query('SELECT * FROM products', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
