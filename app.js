@@ -6,14 +6,17 @@ var nodemailer = require('nodemailer');
 var	port = process.env.PORT || 3000
 var { Client } = require('pg');
 
-var client = new Client({
+
+console.log('config db', config.db);
+var client = new Client(config.db);
+/* var client = new Client({
 	database: 'd4clggv62j2det',
 	user: 'olnlnpdigamris',
 	password: 'a62e045839dfb4785622cd9f61312f5727ab1148f3b752672fa306504750b8e5',
 	host: 'ec2-23-23-242-163.compute-1.amazonaws.com',
 	ssl: true,
 	port: 5432
- });
+ }); */
 
 // connect to database
 client.connect()
@@ -39,7 +42,7 @@ app.set('view engine', 'handlebars');
 	res.render('products');
 });
  */
- app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/member/Gerald', function(req, res) {
