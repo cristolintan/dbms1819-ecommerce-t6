@@ -123,7 +123,7 @@ app.post('/brand/create/saving', function(req, res) {
 });
 
 app.get('/categories', function(req, res) {
-	client.query('SELECT * FROM categories')
+	 
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_category', result);
@@ -147,23 +147,24 @@ app.get('/product/create', function(req, res) {
 	res.render('create_category');
 });
 
-app.post('/product/create/saving', (req, data)=>{
-	client.query("SELECT * FROM brands") {
+app.post('/product/create/saving', (req,res)=>{
+	var id = req.params.id;
+	client.query("SELECT * FROM brands", (req, data)=> {
 		var brands_list = [];
 			for (var i = 0; i < data.rows.length+1; i++) {
 				if (i==product_id) {
 					brands_list.push(data.rows[i-1]);
 				}
 			}
-	}
-	client.query("SELECT * FROM categories") {
+		}
+	client.query("SELECT * FROM categories", (req, data)=> {
 		var category_list = [];
 			for (var i = 0; i < data.rows.length+1; i++) {
 				if (i==category_id) {
 					category_list.push(data.rows[i-1]);
 				}
 			}
-	}
+		}
 	res.redirect('/');
 });
 
