@@ -3,12 +3,12 @@
 	{{#each data}}
 	<div class="split left">
 		<div class="centered">
-		<img style="max-width: 530px" src="{{this.picture}}" alt="Product">
-		<h2>Name: {{this.name}}</h2>
-		<p>Brand: {{this.brand}}</p>
-		<p>Type: {{this.type}}</p>
-		<p>Price: ₱{{this.price}}.00</p>
-		<p>{{this.description}}</p>
+		<img style="max-width: 530px" src="{{this.product_picture}}" alt="Product">
+		<h2>Name: {{this.product_name}}</h2>
+		<p>Brand: {{this.brand_id}}</p>
+		<p>Type: {{this.category_id}}</p>
+		<p>Price: ₱{{this.product_price}}.00</p>
+		<p>{{this.product_description}}</p>
 		</div>
 	</div>
 
@@ -16,7 +16,7 @@
  		 <div class="centered">
    		 <h2>Order Form</h2>
    		 <h4>{{msg}}</h4>
-    		<form method="POST" action="{{this.id}}/send">
+    		<form method="POST" action="{{this.product_id}}/send">
     			<div class="controls">
 
     				<div class="form-group">
@@ -43,7 +43,7 @@
 					<div class="form-group">
 					<label class="control-label" for="productid">Product Name</label>
 					<div>
-						<input id="product_name" name="product_name" type="text" value="{{this.name}}" class="form-control" readonly >
+						<input id="product_name" name="product_name" type="text" value="{{this.product_name}}" class="form-control" readonly >
 					</div>
 					</div>
 
