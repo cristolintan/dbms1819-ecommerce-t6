@@ -144,6 +144,33 @@ app.post('/category/create/saving', function(req, res) {
 });
 
 app.get('/product/create', function(req, res) {
+	var category = [];
+	var brand = [];
+	var both = [];
+	client.query('SELECT * FROM categories')
+	.then((result)=>{
+		category = result.rows;
+		console.log('results?', result);
+		both.push(category);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+	client.query('SELECT * FROM brands')
+	.then((result)=>{
+		brand = result.rows;
+		both.push(brand);
+		console.log(brand);
+		console.log(both );
+		res.render('create_product', {
+			rows: both
+		});
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
 	res.render('create_product');
 });
 

@@ -12,9 +12,9 @@
 					<div class="form-group">
 					<label class="control-label" for="phone">Category</label>
 					<div>
-						{{#each rows}}
+						{{#each rows.[0]}}
 						<select id="category_name" name="category_name">
-							<option>{{category_l ist}}</option>
+							<option value="{{this.category_id}}">{{this.category_name}}</option>
 						</select>
 						{{/each}}
 					</div>
@@ -23,9 +23,9 @@
 					<div class="form-group">
     				<label class="control-label" for="name">Brand</label>
     				<div>
-    					{{#each rows}}
+    					{{#each rows.[1]}}
 						<select id="brand_name" name="brand_name">
-							<option>{{brand_list}}</option>
+							<option value="{{this.brand_id}}">{{this.brand_name}}</option>
 						</select>
 						{{/each}}
 					</div>
