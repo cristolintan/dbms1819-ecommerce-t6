@@ -1,5 +1,5 @@
 <div class="centered">
-    		<form method="POST" action="/prouct/create/saving">
+    		<form method="POST" action="/product/create/saving">
     			<div class="controls">
 
     				<div class="form-group">
@@ -12,20 +12,24 @@
 					<div class="form-group">
 					<label class="control-label" for="phone">Category</label>
 					<div>
+						{{#each rows}}
 						<select id="category_name" name="category_name">
-							<option>{{category_list}}</option>
+							<option>{{category_l ist}}</option>
 						</select>
+						{{/each}}
 					</div>
 					</div>
 
 					<div class="form-group">
     				<label class="control-label" for="name">Brand</label>
     				<div>
+    					{{#each rows}}
 						<select id="brand_name" name="brand_name">
 							<option>{{brand_list}}</option>
 						</select>
+						{{/each}}
 					</div>
-					</div>
+					</div
 
 					<div class="form-group">
     				<label class="control-label" for="name">Price</label>
