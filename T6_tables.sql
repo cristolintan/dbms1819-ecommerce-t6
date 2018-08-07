@@ -16,7 +16,7 @@ CREATE TABLE "brands" (
   "brand_description" VARCHAR(255)
 );
 
-CREATE TABLE "categories" 
+CREATE TABLE "categories" (
   "category_id" SERIAL PRIMARY KEY,
   "category_name" VARCHAR(80)
 );
@@ -25,7 +25,7 @@ CREATE TABLE "products" (
   "product_id" SERIAL PRIMARY KEY,
   "product_name" VARCHAR(80),
   "product_description" VARCHAR(255),
-  "product_tagline" VARCHAR(255),
+  "brand_tagline" VARCHAR(255),
   "product_price" FLOAT(2),
   "warranty" INT,
   "category_id" INT REFERENCES categories(category_id),
