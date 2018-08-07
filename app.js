@@ -35,7 +35,7 @@ app.set('view engine', 'handlebars');
 	res.render('products');
 });
  */
- app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/member/Gerald', function(req, res) {
