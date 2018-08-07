@@ -113,11 +113,11 @@ app.get('/brands', function(req, res) {
 	});
 });
 
-app.get('/brand', function(req, res) {
+app.get('/brand/create', function(req, res) {
 	res.render('create_brand');
 });
 
-app.post('/brand/create', function(req, res) {
+app.post('/brand/creating', function(req, res) {
 	client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('"+req.body.brand_name+"','"+req.body.brand_description+"')");
 	res.redirect('/brands');
 })
@@ -134,11 +134,11 @@ app.get('/categories', function(req, res) {
 	});
 });
 
-app.get('/category', function(req, res) {
+app.get('/category/create', function(req, res) {
 	res.render('create_category');
 });
 
-app.post('/category/create', function(req, res) {
+app.post('/category/creating', function(req, res) {
 	client.query("INSERT INTO products_category (category) VALUES ('"+req.body.category+"')");
 	res.redirect('/categories');
 })
