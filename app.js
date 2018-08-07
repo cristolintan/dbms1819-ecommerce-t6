@@ -150,7 +150,7 @@ app.get('/product/create', function(req, res) {
 	client.query('SELECT * FROM categories')
 	.then((result)=>{
 		category = result.rows;
-		console.log('results?', result);
+		console.log('category:', category);
 		both.push(category);
 	})
 	.catch((err) => {
@@ -171,7 +171,6 @@ app.get('/product/create', function(req, res) {
 		console.log('error',err);
 		res.send('Error!');
 	});
-	res.render('create_product');
 });
 
 app.post('/product/create/saving', (req,res)=>{
