@@ -1,45 +1,47 @@
 CREATE TABLE "customers" (
   "customer_id" SERIAL PRIMARY KEY,
-  "customer_email" VARCHAR(50),
-  "first_name" VARCHAR(50),
-  "last_name" VARCHAR(50),
-  "state" VARCHAR(50),
-  "city" VARCHAR(50),
-  "street" VARCHAR(50),
-  "number" INT
+  "customer_email" VARCHAR(80),
+  "first_name" VARCHAR(80),
+  "last_name" VARCHAR(80),
+  "street" VARCHAR(80),
+  "municipality" VARCHAR(80),
+  "province" VARCHAR(80),
+  "zipcode" INT
 );
 
 
 CREATE TABLE "brands" (
   "brand_id" SERIAL PRIMARY KEY,
-  "brand_description" VARCHAR(255),
-  "brand_name" VARCHAR(50)
+  "brand_name" VARCHAR(80),
+  "brand_description" VARCHAR(255)
+);
+
+CREATE TABLE "categories" (
+  "category_id" SERIAL PRIMARY KEY,
+  "category_name" VARCHAR(80)
 );
 
 CREATE TABLE "products" (
   "product_id" SERIAL PRIMARY KEY,
-  "product_name" VARCHAR(50),
-  "product_about" VARCHAR(255),
-  "product_price" DECIMAL(6,2),
+  "product_name" VARCHAR(80),
+  "product_description" VARCHAR(255),
+  "product_tagline" VARCHAR(255),
+  "product_price" FLOAT(2),
   "warranty" INT,
+  "category_id" INT REFERENCES categories(category_id),
   "brand_id" INT REFERENCES brands(brand_id)
 );
 
 CREATE TABLE "orders" (
   "order_id" SERIAL PRIMARY KEY,
-  "product_id" INT REFERENCES products(product_id),
   "customer_id" INT REFERENCES customers(customer_id),
-  "purchase_date" DATE
+  "product_id" INT REFERENCES products(product_id),
+  "purchase_date" DATE,
+  "quantity" INT
 );
 
 CREATE TABLE "customer_fave_products" (
   "fave_products_id" SERIAL PRIMARY KEY,
   "customer_id" INT REFERENCES customers(customer_id),
   "product_id" INT REFERENCES products(product_id)
-);
-
-CREATE TABLE "products_category" (
-  "products_category_id" SERIAL PRIMARY KEY,
-  "product_id" INT REFERENCES products(product_id),
-  "category" VARCHAR(50)
 );
