@@ -123,7 +123,7 @@ app.post('/brand/creating', function(req, res) {
 });
 
 app.get('/categories', function(req, res) {
-	client.query('SELECT * FROM products_category')
+	client.query('SELECT * FROM categories')
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_category', result);
