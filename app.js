@@ -144,7 +144,7 @@ app.post('/category/create/saving', function(req, res) {
 });
 
 app.get('/product/create', function(req, res) {
-	res.render('create_category');
+	res.render('create_product');
 });
 
 app.post('/product/create/saving', (req,res)=>{
