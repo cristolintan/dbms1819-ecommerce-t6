@@ -120,7 +120,7 @@ app.get('/brand/create', function(req, res) {
 app.post('/brand/creating', function(req, res) {
 	client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('"+req.body.brand_name+"','"+req.body.brand_description+"')");
 	res.redirect('/brands');
-})
+});
 
 app.get('/categories', function(req, res) {
 	client.query('SELECT * FROM products_category')
@@ -141,7 +141,16 @@ app.get('/category/create', function(req, res) {
 app.post('/category/creating', function(req, res) {
 	client.query("INSERT INTO products_category (category) VALUES ('"+req.body.category+"')");
 	res.redirect('/categories');
-})
+});
+
+app.get('/product/create', function(req, res) {
+	res.render('create_category');
+});
+
+app.post('/product/creating', function(req, res) {
+	client.query("INSERT INTO products_category (category) VALUES ('"+req.body.category+"')");
+	res.redirect('/categories');
+});
 
 app.post('/products/:id/send', function(req, res) {
 	console.log(req.body);
