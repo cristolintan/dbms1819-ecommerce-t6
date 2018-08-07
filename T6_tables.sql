@@ -27,6 +27,7 @@ CREATE TABLE "products" (
   "product_description" VARCHAR(255),
   "brand_tagline" VARCHAR(255),
   "product_price" FLOAT(2),
+  "product_picture" VARCHAR,
   "warranty" INT,
   "category_id" INT REFERENCES categories(category_id),
   "brand_id" INT REFERENCES brands(brand_id)

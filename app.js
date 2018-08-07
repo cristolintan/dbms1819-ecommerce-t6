@@ -147,9 +147,24 @@ app.get('/product/create', function(req, res) {
 	res.render('create_category');
 });
 
-app.post('/product/creating', function(req, res) {
-	client.query("INSERT INTO products_category (category) VALUES ('"+req.body.category+"')");
-	res.redirect('/categories');
+app.post('/product/create/saving', (req, data)=>{
+	client.query("SELECT * FROM brands") {
+		var brands_list = [];
+			for (var i = 0; i < data.rows.length+1; i++) {
+				if (i==product_id) {
+					brands_list.push(data.rows[i-1]);
+				}
+			}
+	}
+	client.query("SELECT * FROM categories") {
+		var category_list = [];
+			for (var i = 0; i < data.rows.length+1; i++) {
+				if (i==category_id) {
+					category_list.push(data.rows[i-1]);
+				}
+			}
+	}
+	res.redirect('/');
 });
 
 app.post('/products/:id/send', function(req, res) {
