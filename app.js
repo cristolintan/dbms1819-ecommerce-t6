@@ -173,26 +173,8 @@ app.get('/product/create', function(req, res) {
 	});
 });
 
-app.post('/product/create/saving', (req,res)=>{
-	var id = req.params.id;
-	client.query("SELECT * FROM brands", (req, data)=> {
-		var brands_list = [];
-			for (var i = 0; i < data.rows.length+1; i++) {
-				if (i==product_id) {
-					brands_list.push(data.rows[i-1]);
-				}
-			}
-					data_brand: brands_list
-		})
-	client.query("SELECT * FROM categories", (req, data)=> {
-		var category_list = [];
-			for (var i = 0; i < data.rows.length+1; i++) {
-				if (i==category_id) {
-					category_list.push(data.rows[i-1]);
-				}
-			}
-					data_category: brands_list
-		})
+app.post('/product/create/saving', function(req,res) {
+	client.query("INSERT INTO products (product_name, product_description, brand_tagline, product_price, product_picture, warranty, category_id, brand_id) VALUES ('"+req.body.product_name+"', '"+req.body.product_description+"', '"+req.body.brand_tagline+"', '"+req.body.product_price+"', '"+req.body.product_picture+"', '"+req.body.warranty+"', '"+req.body.category_id+"', '"+req.body.brand_id+"')");
 	res.redirect('/');
 });
 
