@@ -117,7 +117,7 @@ app.get('/brand/create', function(req, res) {
 	res.render('create_brand');
 });
 
-app.post('/brand/creating', function(req, res) {
+app.post('/brand', function(req, res) {
 	client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('"+req.body.brand_name+"','"+req.body.brand_description+"')");
 	res.redirect('/brands');
 });

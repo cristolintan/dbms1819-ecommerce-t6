@@ -16,7 +16,7 @@ CREATE TABLE "brands" (
   "brand_description" VARCHAR(255)
 );
 
-CREATE TABLE "categories" (
+CREATE TABLE "categories" 
   "category_id" SERIAL PRIMARY KEY,
   "category_name" VARCHAR(80)
 );
