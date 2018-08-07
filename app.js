@@ -156,7 +156,7 @@ app.post('/product/create/saving', (req,res)=>{
 					brands_list.push(data.rows[i-1]);
 				}
 			}
-		}
+		})
 	client.query("SELECT * FROM categories", (req, data)=> {
 		var category_list = [];
 			for (var i = 0; i < data.rows.length+1; i++) {
@@ -164,7 +164,7 @@ app.post('/product/create/saving', (req,res)=>{
 					category_list.push(data.rows[i-1]);
 				}
 			}
-		}
+		})
 	res.redirect('/');
 });
 
