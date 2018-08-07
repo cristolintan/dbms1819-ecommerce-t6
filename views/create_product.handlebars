@@ -12,22 +12,18 @@
 					<div class="form-group">
 					<label class="control-label" for="phone">Category</label>
 					<div>
-						{{#each data_category}}
 						<select id="category_name" name="category_name" required>
-							<option>{{category_name}}</option>
+							<option>{{category_list}}</option>
 						</select>
-						{{#each}}
 					</div>
 					</div>
 
 					<div class="form-group">
     				<label class="control-label" for="name">Brand</label>
     				<div>
-    					{{#each data_category}}
 						<select id="brand_name" name="brand_name" required>
-							<option>{{brand_name}}</option>
+							<option>{{brand_list}}</option>
 						</select>
-						{{#each}}
 					</div>
 					</div>
 
