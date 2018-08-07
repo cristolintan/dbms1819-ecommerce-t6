@@ -85,7 +85,8 @@ app.get('/', (req, res) => {
 
 app.get('/products/:id', (req,res)=>{
 	var id = req.params.id;
-	client.query('SELECT * FROM products', (req, data)=>{
+	client.query('SELECT * FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id', (req, data)=>{
+	//console.log(data);
 		var list = [];
 		for (var i = 0; i < data.rows.length+1; i++) {
 			if (i==id) {
