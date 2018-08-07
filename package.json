@@ -4,7 +4,7 @@
   "description": "productsdb",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "Mabandos-Matias-Team6",
   "license": "ISC",
