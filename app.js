@@ -156,6 +156,7 @@ app.post('/product/create/saving', (req,res)=>{
 					brands_list.push(data.rows[i-1]);
 				}
 			}
+					data_brand: brands_list
 		})
 	client.query("SELECT * FROM categories", (req, data)=> {
 		var category_list = [];
@@ -164,9 +165,12 @@ app.post('/product/create/saving', (req,res)=>{
 					category_list.push(data.rows[i-1]);
 				}
 			}
+					data_category: brands_list
 		})
 	res.redirect('/');
 });
+
+
 
 app.post('/products/:id/send', function(req, res) {
 	console.log(req.body);
