@@ -82,6 +82,7 @@ app.get('/', (req, res) => {
 		});
 	});
 });
+
 app.get('/products/:id', (req,res)=>{
 	var id = req.params.id;
 	client.query('SELECT * FROM products', (req, data)=>{
