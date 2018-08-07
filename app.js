@@ -138,7 +138,7 @@ app.get('/category/create', function(req, res) {
 	res.render('create_category');
 });
 
-app.post('/category/creating', function(req, res) {
+app.post('/category/create/saving', function(req, res) {
 	client.query("INSERT INTO categories (category_name) VALUES ('"+req.body.category+"')");
 	res.redirect('/categories');
 });
