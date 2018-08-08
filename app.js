@@ -182,15 +182,8 @@ app.get('/product/create', function(req, res) {
 
 app.post('/product/create/saving', function(req, res) {
 	// (product_name,product_description,brand_tagline,product_price,product_picture,warranty,category_id,brand_id) 
-	client.query("INSERT INTO products VALUES ('"+req.body.product_name+"','"+req.body.product_description+"', '"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.product_picture+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')")
-	.then((result)=>{
-		console.log('results?', result);
-		res.redirect('/products');
-	})
-	.catch((err) => {
-		console.log('error',err);
-		res.send('Error!');
-	});
+	client.query("INSERT INTO products VALUES ('"+req.body.product_name+"','"+req.body.product_description+"', '"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.product_picture+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')");
+	res.redirect('/products');
 });
 
 
