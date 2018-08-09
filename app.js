@@ -81,7 +81,7 @@ app.get('/products/:id', (req, res) => {
 		var list = [];
 		for (var i = 0; i < data.rows.length+1; i++) {
 			if (i==id) {
-				list.push(data.rows[i-1]);
+				list.push(data.rows[i]);
 			}
 		}
 		res.render('productdetail',{
