@@ -187,16 +187,16 @@ app.get('/product/create', function(req, res) {
 }); */
 
 app.post('/product/create/saving', function(req,res) {
-	client.query("INSERT INTO products ([product_name], [product_description], [brand_tagline], [product_price], [product_picture], [warranty], [category_id], [brand_id]) VALUES ('"+req.body.product_name+"', '"+req.body.product_description+"', '"+req.body.brand_tagline+"', '"+req.body.product_price+"', '"+req.body.product_picture+"', '"+req.body.warranty+"', '"+req.body.category_id+"', '"+req.body.brand_id+"')");
-	res.redirect('/products');
-	/* .then((result)=>{
+	client.query("INSERT INTO products(product_name,product_description,brand_tagline,product_price,product_picture,warranty,category_id,brand_id) VALUES ('"+req.body.product_name+"', '"+req.body.product_description+"', '"+req.body.brand_tagline+"', '"+req.body.product_price+"', '"+req.body.product_picture+"', '"+req.body.warranty+"', '"+req.body.category_id+"', '"+req.body.brand_id+"')")
+	
+	.then(result=>{
 		console.log('results?', result);
-		
+		res.redirect('/products');
 	})
-	.catch((err) => {
+	.catch(err => {
 		console.log('error',err);
 		res.send('Error!');
-	}); */
+	});
 });
 
 
