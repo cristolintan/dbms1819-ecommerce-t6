@@ -64,20 +64,7 @@ app.get('/member/Benz', function(req, res) {
 
 app.get('/', (req, res) => {
 	
-	client.query('SELECT * FROM products', (req, data)=>{
-		var list = [];
-		for (var i = 0; i < data.rows.length; i++) {
-			list.push(data.rows[i]);
-		}
-		res.render('products',{
-			data: list
-		});
-	});
-});
-
-app.get('/products', (req, res) => {
-	
-	client.query('SELECT * FROM products', (req, data)=>{
+	client.query('SELECT * FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
 			list.push(data.rows[i]);
@@ -180,23 +167,17 @@ app.get('/product/create', function(req, res) {
 	});
 });
 
-/* app.post('/product/create/saving', function(req, res) {
-	// (product_name,product_description,brand_tagline,product_price,product_picture,warranty,category_id,brand_id) 
-	client.query("INSERT INTO products VALUES ('"+req.body.product_name+"','"+req.body.product_description+"', '"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.product_picture+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')");
-	res.redirect('/products');
-}); */
-
 app.post('/product/create/saving', function(req,res) {
-	client.query("INSERT INTO products (product_name,product_description) VALUES ('"+req.body.product_name+"','"+req.body.product_description+"')")
-	// ,brand_tagline,product_price,product_picture,warranty,category_id,brand_id	, '"+req.body.brand_tagline+"', '"+req.body.product_price+"', '"+req.body.product_picture+"', '"+req.body.warranty+"', '"+req.body.category_id+"', '"+req.body.brand_id+"'
+	client.query("INSERT INTO products (product_picture,product_name,product_description,brand_tagline,product_price,warranty,category_id,brand_id) VALUES ('"+req.body.product_picture+"','"+req.body.product_name+"','"+req.body.product_description+"','"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')")
 	.then(result=>{
-		//console.log('results?', result);
-		res.redirect('/products');
+		console.log('results?', result);
+		res.redirect('/');
 	})
 	.catch(err => {
 		console.log('error',err);
 		res.send('Error!');
 	});
+	
 });
 
 
