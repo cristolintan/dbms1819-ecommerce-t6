@@ -13,9 +13,9 @@
 							</div>
 
 							<div class="form-group">
-							<label class="control-label" for="phone">Category</label>
+							<label class="control-label" for="name">Category</label>
 							<div>
-								<select id="category_id" name="category_id">
+								<select id="category_id" name="category_id" required>
 								{{#each rows.[0]}}
 									<option value="{{this.category_id}}">{{this.category_name}}</option>
 								{{/each}}
@@ -26,7 +26,7 @@
 							<div class="form-group">
 		    				<label class="control-label" for="name">Brand</label>
 		    				<div>
-								<select id="brand_id" name="brand_id">
+								<select id="brand_id" name="brand_id"required>
 		    					{{#each rows.[1]}}
 									<option value="{{this.brand_id}}">{{this.brand_name}}</option>
 								{{/each}}
@@ -42,9 +42,9 @@
 							</div>
 
 							<div class="form-group">
-							<label class="control-label" for="phone">Description</label>
+							<label class="control-label" for="name">Description</label>
 							<div>
-								<textarea id="product_description" name="product_description" type="text" rows="3" placeholder="Write your description" class="form-control" required > </textarea>
+								<textarea id="product_description" name="product_description" type="text" rows="3" placeholder="Write your description" class="form-control"> </textarea>
 							</div>
 							</div>
 
@@ -65,7 +65,7 @@
 							<div class="form-group">
 		    				<label class="control-label" for="name">Warranty</label>
 		    				<div>
-								<input id="warranty" name="warranty" type="number" placeholder="Warranty" class="form-control" required >
+								<input id="warranty" name="warranty" type="number" placeholder="Warranty" class="form-control">
 							</div>
 							</div>
 
