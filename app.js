@@ -211,7 +211,7 @@ app.get('/product/update/:id', function(req,res) {
 		console.log(product);
 		console.log(both);
 		res.render('update_product', {
-			rows: results.rows[0],
+			rows: result.rows[0],
 			brand: both
 		});
 	})
