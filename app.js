@@ -182,12 +182,23 @@ app.post('/product/create/saving', function(req,res) {
 app.get('/product/update/:id', function(req,res) {
 	var category = [];
 	var brand = [];
+	var products = [];
 	var both = [];
 	client.query('SELECT * FROM categories')
 	.then((result)=>{
 		category = result.rows;
 		console.log('category:', category);
 		both.push(category);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+	client.query('SELECT * FROM products')
+	.then((result)=>{
+		product = result.rows;
+		console.log('product:', product);
+		both.push(product);
 	})
 	.catch((err) => {
 		console.log('error',err);
