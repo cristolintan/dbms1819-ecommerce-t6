@@ -179,7 +179,22 @@ app.post('/product/create/saving', function(req,res) {
 	
 });
 
+app.get('/product/update/:id', function(req,res) {
+	res.render('update_product');
+});
 
+app.post('/product/update/saving', function(req,res) {
+	client.query("INSERT INTO products (product_picture,product_name,product_description,brand_tagline,product_price,warranty,category_id,brand_id) VALUES ('"+req.body.product_picture+"','"+req.body.product_name+"','"+req.body.product_description+"','"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')")
+	.then(result=>{
+		console.log('results?', result);
+		res.redirect('/');
+	})
+	.catch(err => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+	
+});
 
 app.post('/products/:id/send', function(req, res) {
 	console.log(req.body);
