@@ -9,7 +9,6 @@ CREATE TABLE "customers" (
   "zipcode" INT
 );
 
-
 CREATE TABLE "brands" (
   "brand_id" SERIAL PRIMARY KEY,
   "brand_name" VARCHAR(80),
@@ -24,10 +23,10 @@ CREATE TABLE "categories" (
 CREATE TABLE "products" (
   "product_id" SERIAL PRIMARY KEY,
   "product_name" VARCHAR(80),
-  "product_description" VARCHAR(5000),
-  "brand_tagline" VARCHAR(255),
+  "product_description" VARCHAR(255),
+  "brand_tagline" VARCHAR(50),
   "product_price" FLOAT(2),
-  "product_picture" VARCHAR(5000),
+  "product_picture" VARCHAR(255),
   "warranty" INT,
   "category_id" INT REFERENCES categories(category_id),
   "brand_id" INT REFERENCES brands(brand_id)
