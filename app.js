@@ -167,7 +167,7 @@ app.get('/product/create', function(req, res) {
 });
 
 app.post('/product/create/saving', function(req,res) {
-	var description = +req.body.product_description+;
+	var description = req.body.product_description;
 	client.query("INSERT INTO products (product_picture,product_name,product_description,brand_tagline,product_price,warranty,category_id,brand_id) VALUES ('"+req.body.product_picture+"','"+req.body.product_name+"','"description"','"+req.body.brand_tagline+"','"+req.body.product_price+"','"+req.body.warranty+"','"+req.body.category_id+"','"+req.body.brand_id+"')")
 	.then(result=>{
 		console.log('results?', result);
