@@ -80,9 +80,7 @@ app.get('/products/:id', (req, res) => {
 	client.query('SELECT * FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
-			if (i==id) {
 				list.push(data.rows[i]);
-			}
 		}
 		res.render('productdetail',{
 			data: list
