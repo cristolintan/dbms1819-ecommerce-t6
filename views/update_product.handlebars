@@ -16,7 +16,7 @@
 							<label class="control-label" for="name">Category</label>
 							<div>
 								<select id="category_id" name="category_id" required>
-								{{#each rows.[0]}}
+								{{#each brand.[0]}}
 									<option value="{{this.category_id}}">{{this.category_name}}</option>
 								{{/each}}
 								</select>
@@ -27,7 +27,7 @@
 		    				<label class="control-label" for="name">Brand</label>
 		    				<div>
 								<select id="brand_id" name="brand_id"required>
-		    					{{#each rows.[2]}}
+		    					{{#each brand.[1]}}
 									<option value="{{this.brand_id}}">{{this.brand_name}}</option>
 								{{/each}}
 								</select>
