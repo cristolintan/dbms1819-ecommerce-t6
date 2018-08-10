@@ -182,7 +182,7 @@ app.post('/product/create/saving', function(req,res) {
 app.get('/product/update/:id', function(req,res) {
 	var category = [];
 	var brand = [];
-	var products = [];
+	var product = [];
 	var both = [];
 	client.query('SELECT * FROM categories')
 	.then((result)=>{
@@ -209,7 +209,7 @@ app.get('/product/update/:id', function(req,res) {
 		brand = result.rows;
 		both.push(brand);
 		console.log(brand);
-		console.log(both );
+		console.log(both);
 		res.render('update_product', {
 			rows: both
 		});
