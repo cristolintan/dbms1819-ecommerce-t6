@@ -17,7 +17,7 @@
 							<div>
 								<select id="category_id" name="category_id" required>
 								{{#each rows.[0]}}
-									<option value="{{rows.category_id}}">{{rows.category_name}}</option>
+									<option value="{{this.category_id}}">{{this.category_name}}</option>
 								{{/each}}
 								</select>
 							</div>
@@ -28,7 +28,7 @@
 		    				<div>
 								<select id="brand_id" name="brand_id"required>
 		    					{{#each rows.[2]}}
-									<option value="{{rows.brand_id}}">{{rows.brand_name}}</option>
+									<option value="{{this.brand_id}}">{{this.brand_name}}</option>
 								{{/each}}
 								</select>
 							</div>

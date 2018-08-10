@@ -194,7 +194,7 @@ app.get('/product/update/:id', function(req,res) {
 		console.log('error',err);
 		res.send('Error!');
 	});
-	client.query('SELECT * FROM products')
+	client.query("SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = '"+req.body.category_name+"'")
 	.then((result)=>{
 		product = result.rows;
 		console.log('product:', product);
