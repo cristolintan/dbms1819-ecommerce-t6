@@ -8,7 +8,7 @@
 		    				<div class="form-group">
 		    				<label class="control-label" for="name">Product Name</label>
 		    				<div>
-								<input id="product_name" value="{{this.product_name}}" name="product_name" type="text" placeholder="Product Name" class="form-control" required >
+								<input id="product_name" value="{{rows.product_name}}" name="product_name" type="text" placeholder="Product Name" class="form-control" required >
 							</div>
 							</div>
 
@@ -17,7 +17,7 @@
 							<div>
 								<select id="category_id" name="category_id" required>
 								{{#each rows.[0]}}
-									<option value="{{this.category_id}}">{{this.category_name}}</option>
+									<option value="{{rows.category_id}}">{{rows.category_name}}</option>
 								{{/each}}
 								</select>
 							</div>
@@ -27,8 +27,8 @@
 		    				<label class="control-label" for="name">Brand</label>
 		    				<div>
 								<select id="brand_id" name="brand_id"required>
-		    					{{#each rows.[1]}}
-									<option value="{{this.brand_id}}">{{this.brand_name}}</option>
+		    					{{#each rows.[2]}}
+									<option value="{{rows.brand_id}}">{{rows.brand_name}}</option>
 								{{/each}}
 								</select>
 							</div>
@@ -37,35 +37,35 @@
 							<div class="form-group">
 		    				<label class="control-label" for="name">Price</label>
 		    				<div>
-								<input id="product_price" value="{{this.product_price}}" name="product_price" type="number" placeholder="Product Price" class="form-control" required >
+								<input id="product_price" value="{{rows.product_price}}" name="product_price" type="number" placeholder="Product Price" class="form-control" required >
 							</div>
 							</div>
 
 							<div class="form-group">
 							<label class="control-label" for="name">Description</label>
 							<div>
-								<textarea id="product_description" value="{{this.product_description}}" name="product_description" type="text" rows="3" maxlength="255" placeholder="Write your description. Single quotations are not allowed." class="form-control"></textarea>
+								<textarea id="product_description" value="{{rows.product_description}}" name="product_description" type="text" rows="3" maxlength="255" placeholder="Write your description. Single quotations are not allowed." class="form-control"></textarea>
 							</div>
 							</div>
 
 							<div class="form-group">
 		    				<label class="control-label" for="name">Tagline</label>
 		    				<div>
-								<input id="brand_tagline" value="{{this.brand_tagline}}" name="brand_tagline" type="text" placeholder="Tagline" class="form-control">
+								<input id="brand_tagline" value="{{rows.brand_tagline}}" name="brand_tagline" type="text" placeholder="Tagline" class="form-control">
 							</div>
 							</div>
 
 							<div class="form-group">
 		    				<label class="control-label" for="name">Product Image</label>
 		    				<div>
-								<input id="product_picture" value="{{this.product_picture}}" name="product_picture" type="text" maxlength="500" placeholder="Product Image URL" class="form-control">
+								<input id="product_picture" value="{{rows.product_picture}}" name="product_picture" type="text" maxlength="500" placeholder="Product Image URL" class="form-control">
 							</div>
 							</div>
 
 							<div class="form-group">
 		    				<label class="control-label" for="name">Warranty</label>
 		    				<div>
-								<input id="warranty" value="{{this.warranty}}" name="warranty" type="number" placeholder="Warranty" class="form-control">
+								<input id="warranty" value="{{rows.warranty}}" name="warranty" type="number" placeholder="Warranty" class="form-control">
 							</div>
 							</div>
 
