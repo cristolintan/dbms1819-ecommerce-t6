@@ -148,18 +148,32 @@ app.get('/customers', function(req, res) {
 	});
 });
 
-app.get('/orders', function(req, res) {
-	client.query('SELECT * FROM orders')
+app.get('/customer/:id', (req, res) => {
+	client.query("SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,customers.street AS street,customers.municipality AS muninicipality,customers.province AS province,customers.zipcode AS zipcode,products.product_name AS product_name,orders.quantity AS qty,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id WHERE customer.id = '"+req.params.id+"'ORDER BY purchase_date DESC ")
 	.then((result)=>{
-		console.log('results?', result);
-		res.render('list_order', result);
+	   console.log('results?', result);
+		res.render('customer_details', result);
 	})
 	.catch((err) => {
 		console.log('error',err);
 		res.send('Error!');
 	});
+
 });
 
+app.get('/orders', function(req, res) {
+	 client.query("SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,products.product_name AS product_name,orders.quantity AS quantity,orders.purchse_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id ORDER BY purchase_date DESC;")
+	.then((result)=>{
+	    console.log('results?', result);
+		res.render('list_order', result);
+		})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+
+});
+	
 app.get('/product/create', function(req, res) {
 	var category = [];
 	var brand = [];
@@ -259,12 +273,12 @@ app.post('/product/update/:id/saving', function(req,res) {
 });
 
 app.post('/products/:id/send', function(req, res) {
-	client.query("INSERT INTO customers (customer_email,first_name,last_name,street,municipality,province,zipcode) VALUES ('"+req.body.customer_email+"','"+req.body.first_name+"','"+req.body.last_name+"','"+req.body.street+"','"+req.body.municipality+"','"+req.body.province+"','"+req.body.zipcode+"') ON CONFLICT (customer_email) DO UPDATE SET first_name = ('"+req.body.first_name+"'), last_name = ('"+req.body.last_name+"'), street = ('"+req.body.street+"'),municipality = ('"+req.body.municipality+"'),province = ('"+req.body.province+"'),zipcode = ('"+req.body.zipcode+"') WHERE customers.customer_email ='"+req.body.customer_email+"';");
+	client.query("INSERT INTO customers (customer_email,first_name,last_name,street,municipality,province,zipcode) VALUES ('"+req.body.customer_email+"','"+req.body.first_name+"','"+req.body.last_name+"','"+req.body.street+"','"+req.body.municipality+"','"+req.body.province+"','"+req.body.zipcode+"') ON CONFLICT customer_email DO UPDATE SET first_name = '"+req.body.first_name+"', last_name = '"+req.body.last_name+"', street = '"+req.body.street+"',municipality = '"+req.body.municipality+"',province = '"+req.body.province+"',zipcode = '"+req.body.zipcode+"' WHERE customers.customer_email ='"+req.body.customer_email+"';");
 	client.query("SELECT customer_id from customers WHERE customer_email = '"+req.body.customer_email+"';")
    	.then((results)=>{
-   		var id = results.rows[0].customer_id;
+   		var id = results.rows[0].id;
    		console.log(id);
-   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ('"+customer_id+"','"+req.body.product_id+"','"+req.body.quantity+"')")
+   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ('"+id+"','"+req.body.product_id+"','"+req.body.quantity+"')")
    		.then((results)=>{
    		 var maillist = ['geraldbenjamin.theexpertcoding@gmail.com',req.body.customer_email];
      	 var transporter = nodemailer.createTransport({

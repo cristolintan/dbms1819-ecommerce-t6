@@ -1,0 +1,47 @@
+<div class="container">
+  <p>CUSTOMER DETAILS:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>FIRSTNAME</th>
+        <th>LASTNAME</th>
+        <th>EMAIL</th>
+        <th>STREET</th>
+        <th>MUNICIPALITY</th>
+        <th>PROVINCE</th>
+        <th>ZIP CODE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{rows.0.first_name}}</td>
+        <td>{{rows.0.last_name}}</td>
+        <td>{{rows.0.customer_email}}</td>
+        <td>{{rows.0.street}}</td>
+        <td>{{rows.0.municipality}}</td>
+        <td>{{rows.0.province}}</td>
+        <td>{{rows.0.zipcode}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <p>ORDER DETAILS:</p>
+  <table class="table>
+    <thead>
+      <tr>
+        <th>ORDERED PRODUCTS</th>
+        <th>QUANTITY</th>
+        <th>ORDER DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows}}
+      <tr>
+        <td>{{this.product_name}}</td>
+        <td>{{this.quantity}}</td>
+        <td>{{this.purchase_date}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
