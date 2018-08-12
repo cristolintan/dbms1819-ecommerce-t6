@@ -136,6 +136,30 @@ app.post('/category/create/saving', function(req, res) {
 	res.redirect('/categories');
 });
 
+app.get('/customers', function(req, res) {
+	client.query('SELECT * FROM customer')
+	.then((result)=>{
+		console.log('results?', result);
+		res.render('list_customer', result);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+});
+
+app.get('/orders', function(req, res) {
+	client.query('SELECT * FROM orders')
+	.then((result)=>{
+		console.log('results?', result);
+		res.render('list_order', result);
+	})
+	.catch((err) => {
+		console.log('error',err);
+		res.send('Error!');
+	});
+});
+
 app.get('/product/create', function(req, res) {
 	var category = [];
 	var brand = [];
