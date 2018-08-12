@@ -64,7 +64,7 @@ app.get('/member/Benz', function(req, res) {
 
 app.get('/', (req, res) => {
 	
-	client.query('SELECT * FROM products', (req, data)=>{
+	client.query('SELECT * FROM products ORDER BY product_id DESC', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length; i++) {
 			list.push(data.rows[i]);
@@ -95,7 +95,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/brands', function(req, res) {
-	client.query('SELECT * FROM brands')
+	client.query('SELECT * FROM brands ')
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_brand', result);
@@ -137,7 +137,7 @@ app.post('/category/create/saving', function(req, res) {
 });
 
 app.get('/customers', function(req, res) {
-	client.query('SELECT * FROM customers')
+	client.query('SELECT * FROM customers ORDER BY customer_id DESC')
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_customer', result);
