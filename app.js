@@ -137,7 +137,7 @@ app.post('/category/create/saving', function(req, res) {
 });
 
 app.get('/customers', function(req, res) {
-	client.query('SELECT * FROM customer')
+	client.query('SELECT * FROM customers')
 	.then((result)=>{
 		console.log('results?', result);
 		res.render('list_customer', result);
