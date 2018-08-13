@@ -76,7 +76,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products/:id', (req, res) => {
-	client.query('SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, categories.category_name AS category_name FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = '+req.params.id+';', (req, data)=>{
+	var id = req.params.id;
+	client.query('SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, categories.category_name AS category_name FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = '+id+';', (req, data)=>{
 		var list = [];
 		for (var i = 0; i < data.rows.length+1; i++) {
 			if (i==id) {
