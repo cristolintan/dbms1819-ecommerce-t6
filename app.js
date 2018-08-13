@@ -157,10 +157,10 @@ app.get('/customers', function(req, res) {
 });
 
 app.get('/customer/:id', (req, res) => {
-	client.query("SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,customers.street AS street,customers.municipality AS municipality,customers.province AS province,customers.zipcode AS zipcode,products.product_name AS product_name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id WHERE customers.customer_id = '"+req.params.id+"'ORDER BY purchase_date DESC;")
+	client.query("SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,customers.street AS street,customers.municipality AS municipality,customers.province AS province,customers.zipcode AS zipcode,products.product_name AS product_name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id WHERE customers.customer_id = "+req.params.id+"ORDER BY purchase_date DESC;")
 	.then((result)=>{
 	   console.log('results?', result);
-		res.render('customer_details', result);
+		res.render('customerdetail', result);
 	})
 	.catch((err) => {
 		console.log('error',err);
