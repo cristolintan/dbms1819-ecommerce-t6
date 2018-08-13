@@ -307,7 +307,7 @@ app.post('/products/:id/send', function(req, res) {
 				'<h3>Customer Details</h3>'+
 					'<ul>'+
 						'<li>Customer Name: '+req.body.first_name+' '+req.body.last_name+'</li>'+
-						'<li>Email: '+req.body.email+'</li>'+
+						'<li>Email: '+req.body.customer_email+'</li>'+
 						'<li>Product Name: '+req.body.product_name+'</li>'+
 						'<li>Quantity: '+req.body.quantity+'</li>'+
 					'</ul>'
