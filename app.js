@@ -286,7 +286,7 @@ app.post('/products/:id/send', function(req, res) {
    	.then((results)=>{
    		var id = results.rows[0].customer_id;
    		console.log(id);
-   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ("+id+","+req.body.product_id+",'"+req.body.quantity+"')")
+   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ("+id+","+req.params.id+",'"+req.body.quantity+"')")
    		.then((results)=>{
 			var maillist = ['geraldbenjamin.theexpertcoding@gmail.com',req.body.customer_email];
 			var transporter = nodemailer.createTransport({
