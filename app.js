@@ -76,18 +76,26 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products/:id', (req, res) => {
-	var id = req.params.id;
-	client.query('SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, categories.category_name AS category_name FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = '+id+';', (req, data)=>{
-		var list = [];
-		for (var i = 0; i < data.rows.length+1; i++) {
-			if (i==id) {
-				list.push(data.rows[i-1]);
-			}
-		}
+	client.query('SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, categories.category_name AS category_name FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = '+req.params.id+';')
+		.then((results)=>{
+		console.log ('results?',results);
 		res.render('productdetail',{
-			data: list
+			product_name: results.rows[0].products_name,
+			product_description: results.rows[0].product_description,
+	    	brand_tagline: results.rows[0].brand_tagline,
+			price: results.rows[0].product_price,
+			warranty: results.rows[0].warranty,
+			product_picture: results.rows[0].product_picture,
+			brand_name: results.rows[0].brand_name,
+			brand_description: results.rows[0].brand_description,
+			category_name: results.rows[0].category_name,
+			product_id: results.rows[0].products_id
+			})
+		})
+		.catch((err) => {
+			console.log('error',err);
+			res.send('Error!');
 		});
-	});
 });
 
 app.get('/login', function(req, res) {
@@ -278,7 +286,7 @@ app.post('/products/:id/send', function(req, res) {
    	.then((results)=>{
    		var id = results.rows[0].customer_id;
    		console.log(id);
-   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ("+id+","+req.body.product_id+",'"+req.body.quantity+"')")
+   		client.query("INSERT INTO orders (customer_id,product_id,quantity) VALUES ("+id+",'"+req.body.product_id+"','"+req.body.quantity+"')")
    		.then((results)=>{
 			var maillist = ['geraldbenjamin.theexpertcoding@gmail.com',req.body.customer_email];
 			var transporter = nodemailer.createTransport({

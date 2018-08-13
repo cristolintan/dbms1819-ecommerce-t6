@@ -1,15 +1,14 @@
 <body>
 	<div class="container">
-		{{#each data}}
 		<div class="split left">
 			<div class="centered">
 			<img style="max-width: 400px" src="{{this.product_picture}}" alt="Product">
 			<div class="left">
-			<h2>Name: {{this.product_name}}</h2>
-			<p>Brand: {{this.brand_name}}</p>
-			<p>Type: {{this.category_name}}</p>
-			<p>Price: ₱{{this.product_price}}.00</p>
-			<p>{{this.product_description}}</p>
+			<h2>Name: {{product_name}}</h2>
+			<p>Brand: {{brand_name}}</p>
+			<p>Type: {{category_name}}</p>
+			<p>Price: ₱{{product_price}}.00</p>
+			<p>{{product_description}}</p>
 			</div>
 			</div>
 		
@@ -96,6 +95,5 @@
 							</div>
 			</div>
 		</div>
-		{{/each}}
 	</div>
 </body>
