@@ -80,16 +80,16 @@ app.get('/products/:id', (req, res) => {
 		.then((results)=>{
 		console.log ('results?',results);
 		res.render('productdetail',{
-			product_name: results.rows[0].products_name,
+			product_name: results.rows[0].product_name,
 			product_description: results.rows[0].product_description,
 	    	brand_tagline: results.rows[0].brand_tagline,
-			price: results.rows[0].product_price,
+			product_price: results.rows[0].product_price,
 			warranty: results.rows[0].warranty,
 			product_picture: results.rows[0].product_picture,
 			brand_name: results.rows[0].brand_name,
 			brand_description: results.rows[0].brand_description,
 			category_name: results.rows[0].category_name,
-			product_id: results.rows[0].products_id
+			product_id: results.rows[0].product_id
 			})
 		})
 		.catch((err) => {
