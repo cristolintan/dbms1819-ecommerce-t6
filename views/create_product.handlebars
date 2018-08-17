@@ -1,83 +1,94 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="modal-body">
-		    		<form method="POST" action="/product/create/saving">
-		    			<div class="controls">
+<div class="create_product">
+<div class="container">
+  <form method="POST" action="/product/create/saving">
+    <h1 align="center">Product Information</h1>
+    <div class="row">   
+      <div class="col-25">
+        <label for="product_name">Product Name:</label>
+      </div>
+      <div class="col-75">
+        <input id="product_name" name="product_name" type="text" placeholder="Product Name" required >
+      </div>
+    </div>
 
-		    				<div class="form-group">
-		    				<label class="control-label" for="name">Product Name</label>
-		    				<div>
-								<input id="product_name" name="product_name" type="text" placeholder="Product Name" class="form-control" required >
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="category_id">Category:</label>
+      </div>
+      <div class="col-75">
+        <select id="category_id" name="category_id" required>
+          {{#each rows.[0]}}
+            <option value="{{this.category_id}}">{{this.category_name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
 
-							<div class="form-group">
-							<label class="control-label" for="name">Category</label>
-							<div>
-								<select id="category_id" name="category_id" required>
-								{{#each rows.[0]}}
-									<option value="{{this.category_id}}">{{this.category_name}}</option>
-								{{/each}}
-								</select>
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="brand_id">Brand:</label>
+      </div>
+      <div class="col-75">
+       <select id="brand_id" name="brand_id"required>
+         {{#each rows.[1]}}
+            <option value="{{this.brand_id}}">{{this.brand_name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
 
-							<div class="form-group">
-		    				<label class="control-label" for="name">Brand</label>
-		    				<div>
-								<select id="brand_id" name="brand_id"required>
-		    					{{#each rows.[1]}}
-									<option value="{{this.brand_id}}">{{this.brand_name}}</option>
-								{{/each}}
-								</select>
-							</div>
-							</div>
+     <div class="row">
+      <div class="col-25">
+        <label for="product_price">Price:</label>
+      </div>
+      <div class="col-75">
+        <input id="product_price" name="product_price" type="number" placeholder="Product Price" required >
+      </div>
+    </div>
 
-							<div class="form-group">
-		    				<label class="control-label" for="name">Price</label>
-		    				<div>
-								<input id="product_price" name="product_price" type="number" placeholder="Product Price" class="form-control" required >
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="product_description">Description:</label>
+      </div>
+      <div class="col-75">
+        <textarea id="product_description" name="product_description" placeholder="Write your description. Single quotations are not allowed." style="height:100px"></textarea>
+      </div>
+    </div>
 
-							<div class="form-group">
-							<label class="control-label" for="name">Description</label>
-							<div>
-								<textarea id="product_description" name="product_description" type="text" rows="3" maxlength="255" placeholder="Write your description. Single quotations are not allowed." class="form-control"></textarea>
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="brand_tagline">Tagline:</label>
+      </div>
+      <div class="col-75">
+       <input id="brand_tagline" name="brand_tagline" type="text" placeholder="Tagline">
+      </div>
+    </div>
 
-							<div class="form-group">
-		    				<label class="control-label" for="name">Tagline</label>
-		    				<div>
-								<input id="brand_tagline" name="brand_tagline" type="text" placeholder="Tagline" class="form-control">
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="product_picture">Product Image:</label>
+      </div>
+      <div class="col-75">
+       <input id="product_picture" name="product_picture" type="text" maxlength="500" placeholder="Product Image URL">
+      </div>
+    </div>
 
-							<div class="form-group">
-		    				<label class="control-label" for="name">Product Image</label>
-		    				<div>
-								<input id="product_picture" name="product_picture" type="text" maxlength="500" placeholder="Product Image URL" class="form-control">
-							</div>
-							</div>
+    <div class="row">
+      <div class="col-25">
+        <label for="warranty">Warranty:</label>
+      </div>
+      <div class="col-75">
+       <input id="warranty" name="warranty" type="number" placeholder="Warranty">
+      </div>
+    </div>
 
-							<div class="form-group">
-		    				<label class="control-label" for="name">Warranty</label>
-		    				<div>
-								<input id="warranty" name="warranty" type="number" placeholder="Warranty" class="form-control">
-							</div>
-							</div>
 
-							<div class="form-group">
-							<div class="text-center">
-								<button type="submit" class="btn btn-primary btn-lg" title="Submit">Submit</button>
-							</div>
-							</div>
-						
-						</div>
-					</form>
-				</div>	
-		 </div>
-	</div>
-</div>	
+    <div class="row">
+      <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg" title="Submit">Submit</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+</div>

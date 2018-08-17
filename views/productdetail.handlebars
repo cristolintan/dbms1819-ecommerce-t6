@@ -1,99 +1,129 @@
 <body>
 	<div class="container">
 		<div class="split left">
-			<div class="centered">
-			<img style="max-width: 400px" src="{{this.product_picture}}" alt="Product">
+			<div class="centered">		
 			<div class="left">
-			<h2>Name: {{product_name}}</h2>
-			<p>Brand: {{brand_name}}</p>
-			<p>Type: {{category_name}}</p>
-			<p>Price: ₱{{product_price}}.00</p>
-			<p>{{product_description}}</p>
+			<div class="responsive">
+				<div class="container col-lg-12 col-sm-12 col-md-12" style="width: 100%; margin-right: 18pt" >
+					<div class="w3-display-container w3-hover-opacity" >
+						<div class="container_pic">	
+						<img style="width: 100%" src="{{this.product_picture}}" alt="Product">
+						<div class="w3-display-middle w3-display-hover w3-xlarge">
+							<a href="/product/update/{{this.product_id}}"><button class="w3-button w3-green">Update</button></a>
+						</div>
+						</div>
+					</div>
+						<h2>Name: {{product_name}}</h2>
+						<p>Brand: {{brand_name}}</p>
+						<p>Type: {{category_name}}</p>
+						<p>Price: ₱{{product_price}}.00</p>
+						<p>{{product_description}}</p>
+			</div>
+			</div>
 			</div>
 			</div>
 		
 		</div>		
 
 		<div class="split right">
-			<div class="centered">
-				<h2>Order Form</h2>
-				<form method="POST" action="{{this.product_id}}/send">
-					<div class="controls">
-						<div class="form-group">
-							<label class="control-label" for="quantity">Quantity</label>
-							<div>
-								<input id="quantity" name="quantity" type="number" class="form-control" required >
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label" for="first_name">First Name</label>
-							<div>
-								<input id="first_name" name="first_name" type="text" placeholder="First Name" class="form-control" required >
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label" for="last_name">Last Name</label>
-							<div>
-								<input id="last_name" name="last_name" type="text" placeholder="Last Name" class="form-control" required >
-							</div>
-						</div>
+				<div class="order_product">
+				<div class="container">
+				<div class="left" style="margin-top:30pt; margin-left:20%" >
+					<h2>Contact Information</h2>
+				</div>
+  				<form  method="POST" action="{{this.product_id}}/send">
+				<div class="left">				
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="quantity">Quantity:</label>
+      					</div>
+     			    <div class="col-65">
+       					 <input id="quantity" name="quantity" type="number" required >
+      				</div>
+    				</div>
 
-						<div class="form-group">
-							<label class="control-label" for="street">Street</label>
-							<div>
-								<input id="street" name="street" type="text" placeholder="Street" class="form-control" required >
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label" for="municipality">Municipality</label>
-							<div>
-								<input id="municipality" name="municipality" type="text" placeholder="Municipality" class="form-control" required >
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label" for="province">Province</label>
-							<div>
-								<input id="province" name="province" type="text" placeholder="Province" class="form-control" required >
-							</div>
-						</div>
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="first_name">First Name:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="first_name" name="first_name" type="text" placeholder="First Name" required >
+      				</div>
+    				</div>
 
-						<div class="form-group">
-							<label class="control-label" for="customer_email">Email</label>
-							<div>
-								<input id="customer_email" name="customer_email" type="text" placeholder="Email" class="form-control" required >
-							</div>
-						</div>
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="last_name">Last Name:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="last_name" name="last_name" type="text" placeholder="Last Name" required >
+      				</div>
+    				</div>
 
-						<div class="form-group">
-							<label class="control-label" for="productid">Product Name</label>
-							<div>
-								<input id="product_name" name="product_name" type="text" value="{{this.product_name}}" class="form-control" readonly >
-							</div>
-						</div>
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="street">Street:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="street" name="street" type="text" placeholder="Street" required >
+      				</div>
+    				</div>
 
-						<div class="form-group">
-							<label class="control-label" for="zipcode">Zipcode</label>
-							<div>
-								<input id="zipcode" name="zipcode" type="number" class="form-control" required >
-							</div>
-						</div>
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="municipality">Municipality:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="municipality" name="municipality" type="text" placeholder="Municipality" required >
+      				</div>
+    				</div>
 
-						<div class="">
-							<div class="text-center">
-								<button type="submit" class="btn btn-primary btn-lg" title="Submit contact form">Order</button>
-							</div>
-						</div>
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="province">Province:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="province" name="province" type="text" placeholder="Province" required >
+      				</div>
+    				</div>
 
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="customer_email">Email:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="customer_email" name="customer_email" type="text" placeholder="Email" required >
+      				</div>
+    				</div>
+
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="productid">Product Name:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="product_name" name="product_name" type="text" value="{{this.product_name}}" readonly >
+      				</div>
+    				</div>
+
+    				<div class="row">   
+      					<div class="col-15">
+        				<label for="zipcode">Zipcode:</label>
+      					</div>
+     			    <div class="col-65">
+       					<input id="zipcode" name="zipcode" type="number" required >
+      				</div>
+    				</div>
+    				</div>
+
+    				<div class="left" style="margin-top:10pt; margin-right:50%" >
+    				<div class="">
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary btn-lg" title="Submit contact form">Order</button>
+						</div>
+					</div>	
 					</div>
-				</form>
-							<div class="text-center">
-								<a href="/product/update/{{this.product_id}}"><button class="btn btn-primary btn-lg">UPDATE Product</button></a>
-							</div>
-			</div>
+
+  				</form>	
 		</div>
 	</div>
 </body>

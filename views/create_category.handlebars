@@ -1,20 +1,24 @@
-<div class="modal-body mx-auto white-text" style="width: 80%">
-	<form method="POST" action="/category/create/saving">
-    			<div class="controls">
+<div class="create_product">
+<div class="container">
+	<form method="POST" action="/brand/create/saving">
+	 	<h1 align="center">Category Information</h1>
 
-    				<div class="form-group">
-    				<label class="control-label" for="name">Category Name</label>
-    				<div>
-						<input id="category_name" name="category_name" type="text" placeholder="Category Name" class="form-control" required >
-					</div>
-					</div>
+	 	<div class="row">   
+      		<div class="col-25">
+       		 <label for="category_name">Category Name:</label>
+     	 </div>
+      		<div class="col-75">
+       		 <input id="category_name" name="category_name" type="text" placeholder="Category Name" required >
+     		</div>
+    	</div>
 
-					<div class="form-group">
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btn-lg" title="Submit">Submit</button>
-					</div>
-					</div>
+    	<div class="row">
+      		<div class="text-center" style="margin-top:25pt">
+                <button type="submit" class="btn btn-primary btn-lg" title="Submit">Submit</button>
+      		</div>
+   		 </div>
 
-			</div>
-	</form>
+   		</form>
+	</div>
 </div>
+

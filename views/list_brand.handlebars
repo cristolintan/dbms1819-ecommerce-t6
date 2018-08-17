@@ -1,15 +1,22 @@
 <div class="container">
-	<div class="row">
-		{{#each rows}}		
+	<div class="row">	
 		<div class="responsive">
-			<div class="container col-lg-12" style="margin-top: 25pt; width: 420pt; margin-right: 18pt" >			
-				<div class="text">
-					<h4>{{this.brand_name}}</h4>
-					<textarea style="color: black" rows="3" readonly>{{this.brand_description}}</textarea>
-				</div>
+			<div class="container col-lg-12">		
+				<table class="brand_list" align="center">
+				<h1 class="text-center" style="margin-bottom:25pt">List of Brands</h1>	
+				<tr>
+					<th>Brand Name</th>
+					<th>Brand Description</th>
+				</tr>
+				{{#each rows}}
+				<tr>
+					<td width="25%">{{this.brand_name}}</td>
+					<td width="75%">{{this.brand_description}}</td>					
+				</tr>
+				{{/each}}
+				</table>
 			 </div>
 		</div>		
-		{{/each}}
 	</div>
 	<div class="row">
 		<div class="col-lg-12 text-center" style="margin-top: 25pt">
