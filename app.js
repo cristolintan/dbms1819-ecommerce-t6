@@ -7,20 +7,17 @@ var port = process.env.PORT || 3000;
 var config = require('./config.js');
 var { Client } = require('pg');
 console.log('config db', config.db);
-var client = new Client(config.db, callback);
+var client = new Client(config.db);
 
 // connect to database
 client.connect()
   .then(function () {
     console.log('Connected to database!');
-    console.log('1');
   })
   .catch(function (err) {
     if (err) throw err;
     console.log('Cannot connect to database!');
-    console.log('2');
   });
-  console.log('3')
 
 var app = express();
 
