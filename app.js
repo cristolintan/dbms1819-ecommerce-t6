@@ -263,7 +263,7 @@ app.get('/product/update/:id', function (req, res) {
 });
 
 app.post('/product/update/:id/saving', function (req, res) {
-  client.query("UPDATE products SET product_picture = '" + req.body.product_picture + "', product_name = '" + req.body.product_name + "', product_description = '" + req.body.product_description + "', brand_tagline = '" + req.body.brand_tagline + "', product_price = '" + req.body.product_price + "', warranty = '" + req.body.warranty + "', category_id = '" + req.body.category_id + "', brand_id = '" + req.body.brand_id + "' WHERE product_id = '" + req.params.id + "';")
+  client.query("UPDATE products SET product_picture = '" + req.body.product_picture + "', product_name = '" + req.body.product_name + "', product_description = '" + req.body.product_description + "', brand_tagline = '" + req.body.brand_tagline + "', product_price = '" + req.body.product_price + "', warranty = '" + req.body.warranty + "', category_id = '" + req.body.category_id + "', brand_id = '" + req.body.brand_id + "' WHERE product_id = '" + req.params.id + "' ON CONFLICT (product_name) DO NOTHING;")
     .then(result => {
       console.log('results?', result);
       res.redirect('/');
