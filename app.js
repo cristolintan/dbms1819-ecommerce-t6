@@ -1,4 +1,4 @@
-	var express = require('express');
+var express = require('express');
 var path = require('path');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
@@ -117,7 +117,7 @@ app.get('/brand/create', function (req, res) {
 });
 
 app.post('/brand/create/saving', function (req, res) {
-  client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('" + req.body.brand_name + "','" + req.body.brand_description + "')");
+  client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('" + req.body.brand_name + "','" + req.body.brand_description + "')ON CONFLICT DO NOTHING;");
   res.redirect('/brands');
 });
 
@@ -138,7 +138,7 @@ app.get('/category/create', function (req, res) {
 });
 
 app.post('/category/create/saving', function (req, res) {
-  client.query("INSERT INTO categories (category_name) VALUES ('" + req.body.category_name + "')");
+  client.query("INSERT INTO categories (category_name) VALUES ('" + req.body.category_name + "') ON CONFLICT DO NOTHING;");
   res.redirect('/categories');
 });
 
@@ -209,7 +209,7 @@ app.get('/product/create', function (req, res) {
 });
 
 app.post('/product/create/saving', function (req, res) {
-  client.query("INSERT INTO products (product_picture,product_name,product_description,brand_tagline,product_price,warranty,category_id,brand_id) VALUES ('" + req.body.product_picture + "','" + req.body.product_name + "','" + req.body.product_description + "','" + req.body.brand_tagline + "','" + req.body.product_price + "','" + req.body.warranty + "','" + req.body.category_id + "','" + req.body.brand_id + "')")
+  client.query("INSERT INTO products (product_picture,product_name,product_description,brand_tagline,product_price,warranty,category_id,brand_id) VALUES ('" + req.body.product_picture + "','" + req.body.product_name + "','" + req.body.product_description + "','" + req.body.brand_tagline + "','" + req.body.product_price + "','" + req.body.warranty + "','" + req.body.category_id + "','" + req.body.brand_id + "') ON CONFLICT (product_name) DO NOTHING;")
     .then(result => {
       console.log('results?', result);
       res.redirect('/');
@@ -263,7 +263,7 @@ app.get('/product/update/:id', function (req, res) {
 });
 
 app.post('/product/update/:id/saving', function (req, res) {
-  client.query("UPDATE products SET product_picture = '" + req.body.product_picture + "', product_name = '" + req.body.product_name + "', product_description = '" + req.body.product_description + "', brand_tagline = '" + req.body.brand_tagline + "', product_price = '" + req.body.product_price + "', warranty = '" + req.body.warranty + "', category_id = '" + req.body.category_id + "', brand_id = '" + req.body.brand_id + "' WHERE product_id = '" + req.params.id + "';")
+  client.query("UPDATE products SET product_picture = '" + req.body.product_picture + "', product_name = '" + req.body.product_name + "', product_description = '" + req.body.product_description + "', brand_tagline = '" + req.body.brand_tagline + "', product_price = '" + req.body.product_price + "', warranty = '" + req.body.warranty + "', category_id = '" + req.body.category_id + "', brand_id = '" + req.body.brand_id + "' WHERE product_id = '" + req.params.id + "' ON CONFLICT DO NOTHING;")
     .then(result => {
       console.log('results?', result);
       res.redirect('/');
@@ -302,6 +302,7 @@ app.post('/products/:id/send', function (req, res) {
        '<ul>' +
         '<li>Customer Name: ' + req.body.first_name + ' ' + req.body.last_name + '</li>' +
         '<li>Email: ' + req.body.customer_email + '</li>' +
+        '<li>Order ID: ' + req.params.id + '</li>' +
         '<li>Product Name: ' + req.body.product_name + '</li>' +
         '<li>Quantity: ' + req.body.quantity + '</li>' +
        '</ul>'

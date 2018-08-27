@@ -8,8 +8,11 @@
     "lint": "eslint app.js --fix",
     "precommit": "lint-staged"
   },
-  "lint-staged":{
-    "*.js":["eslint","git add"]
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "git add"
+    ]
   },
   "author": "Mabandos-Matias-Team6",
   "license": "ISC",
@@ -21,7 +24,7 @@
     "husky": "^0.14.3",
     "jquery": "^3.3.1",
     "lint-staged": "^7.2.2",
-    "nodemailer": "^4.6.7",
+    "nodemailer": "^4.6.8",
     "nodemon": "^1.18.3",
     "path": "^0.12.7",
     "pg": "^7.4.3",
