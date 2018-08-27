@@ -17,7 +17,7 @@
 					<td>{{this.customer_email}}</td>
 					<td>{{this.product_name}}</td>
 					<td>{{this.quantity}}</td>
-					<td><script>moment({{this.purchase_date}}).format('llll');</script></td>			
+					<td><script>moment(this.purchase_date).format('llll');</script></td>			
 				</tr>
 				{{/each}}
 				</table>
