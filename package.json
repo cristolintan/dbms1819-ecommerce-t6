@@ -4,8 +4,8 @@
   "description": "productsdb",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
     "lint": "eslint app.js --fix",
+    "start": "node app.js",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -24,6 +24,7 @@
     "husky": "^0.14.3",
     "jquery": "^3.3.1",
     "lint-staged": "^7.2.2",
+    "moment": "^2.22.2",
     "nodemailer": "^4.6.8",
     "nodemon": "^1.18.3",
     "path": "^0.12.7",
