@@ -25,7 +25,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Assign Handlebars To .handlebars files
-app.engine('handlebars', exphbs({defaultLayout: 'main', adminLayout: 'admin'}));
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 // Set Default extension .handlebars
 app.set('view engine', 'handlebars');
@@ -39,7 +39,6 @@ app.use(bodyParser.json());
 
 app.get('/member/Gerald', function (req, res) {
   res.render('member', {
-  	layout: ,
     title: 'Profile Page of Gerald',
     name: 'Gerald T. Mabandos',
     email: 'gmabandos@gmail.com',
