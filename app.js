@@ -290,11 +290,14 @@ app.get('/customer/:id', (req, res) => {
 
 app.get('/admin/orders', function (req, res) {
   var list = [];
+  var date = [];
   client.query('SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,products.product_name AS product_name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id ORDER BY purchase_date DESC;')
     .then((result) => {
+      date = moment('purchase_date').format('llll');
       list = result.rows;
       console.log('results?', result);
       res.render('admin/list_order', {
+        purchase_date: date,
         rows: list,
         layout: 'admin'
       });
