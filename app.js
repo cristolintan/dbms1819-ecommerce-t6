@@ -3,6 +3,7 @@ var path = require('path');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+var moment = require('moment');
 var port = process.env.PORT || 3000;
 var config = require('./config.js');
 var { Client } = require('pg');
@@ -131,7 +132,8 @@ app.post('/products/:id/send', function (req, res) {
     .then((results) => {
       var id = results.rows[0].customer_id;
       console.log(id);
-      client.query('INSERT INTO orders (customer_id,product_id,quantity) VALUES (' + id + ',' + req.params.id + ",'" + req.body.quantity + "')")
+      var date = moment().format('llll');
+      client.query('INSERT INTO orders (customer_id,product_id,quantity,purchase_date) VALUES (' + id + ',' + req.params.id + ",'" + req.body.quantity + "','" + date + "')")
         .then((results) => {
           var maillist = ['geraldbenjamin.theexpertcoding@gmail.com', req.body.customer_email];
           var transporter = nodemailer.createTransport({
@@ -197,12 +199,14 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/admin/brands', function (req, res) {
+  var list = [];
   client.query('SELECT * FROM brands;')
     .then((result) => {
+      list = result.rows;
       console.log('results?', result);
       res.render('admin/list_brand', {
-        layout: 'admin',
-        result
+        rows: list,
+        layout: 'admin'
       });
     })
     .catch((err) => {
@@ -223,11 +227,13 @@ app.post('/brand/create/saving', function (req, res) {
 });
 
 app.get('/admin/categories', function (req, res) {
+  var list = [];
   client.query('SELECT * FROM categories')
     .then((result) => {
+      list = result.rows;
       console.log('results?', result);
       res.render('admin/list_category', {
-        result,
+        rows: list,
         layout: 'admin'
       });
     })
@@ -249,11 +255,13 @@ app.post('/category/create/saving', function (req, res) {
 });
 
 app.get('/admin/customers', function (req, res) {
+  var list = [];
   client.query('SELECT * FROM customers ORDER BY customer_id DESC')
     .then((result) => {
+      list = result.rows;
       console.log('results?', result);
       res.render('admin/list_customer', {
-        result,
+        rows: list,
         layout: 'admin'
       });
     })
@@ -264,11 +272,13 @@ app.get('/admin/customers', function (req, res) {
 });
 
 app.get('/customer/:id', (req, res) => {
+  var list = [];
   client.query('SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,customers.street AS street,customers.municipality AS municipality,customers.province AS province,customers.zipcode AS zipcode,products.product_name AS product_name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id WHERE customers.customer_id = ' + req.params.id + 'ORDER BY purchase_date DESC;')
     .then((result) => {
+      list = result.rows;
       console.log('results?', result);
       res.render('admin/customerdetail', {
-        result,
+        rows: list,
         layout: 'admin'
       });
     })
@@ -279,11 +289,13 @@ app.get('/customer/:id', (req, res) => {
 });
 
 app.get('/admin/orders', function (req, res) {
+  var list = [];
   client.query('SELECT customers.first_name AS first_name,customers.last_name AS last_name,customers.customer_email AS customer_email,products.product_name AS product_name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.customer_id=orders.customer_id INNER JOIN products ON products.product_id=orders.product_id ORDER BY purchase_date DESC;')
     .then((result) => {
+      list = result.rows;
       console.log('results?', result);
       res.render('admin/list_order', {
-        result,
+        rows: list,
         layout: 'admin'
       });
     })
@@ -307,13 +319,14 @@ app.get('/product/create', function (req, res) {
       console.log('error', err);
       res.send('Error!');
     });
-  client.query('SELECT * FROM brands')
+  client.query('SELECT * FROM brands;')
     .then((result) => {
       brand = result.rows;
       both.push(brand);
       console.log(brand);
       console.log(both);
-      res.render('create_product', {
+      console.log('results?', result);
+      res.render('admin/create_product', {
         rows: both,
         layout: 'admin'
       });
