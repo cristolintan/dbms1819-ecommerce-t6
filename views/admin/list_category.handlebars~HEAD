@@ -9,7 +9,7 @@
 				</tr>
 				{{#each rows}}
 				<tr>
-					<td width="100%">{{this.category_name}}</td>				
+					<td width="100%">{{this.category_name}}</td>
 				</tr>
 				{{/each}}
 				</table>
