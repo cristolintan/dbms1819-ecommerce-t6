@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">	
+		<div class="responsive">
+			<div class="container col-lg-12">		
+				<table class="brand_list" align="center">	
+				<h1 class="text-center" style="margin-bottom:25pt">List of Categories</h1>	
+				<tr>
+					<th>Categories</th>
+				</tr>
+				{{#each rows}}
+				<tr>
+					<td width="100%">{{this.category_name}}</td>
+				</tr>
+				{{/each}}
+				</table>
+			 </div>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-lg-12 text-center" style="margin-top: 25pt">
+			<div class="text-center">
+				<a href="/category/create"><button class="btn btn-primary btn-lg" title="Submit">ADD</button></a>
+			</div>
+		</div>
+	</div>
+</div>

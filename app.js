@@ -67,17 +67,29 @@ app.get('/', (req, res) => {
     for (var i = 0; i < data.rows.length; i++) {
       list.push(data.rows[i]);
     }
-    res.render('products', {
+    res.render('client/products', {
       data: list
     });
   });
 });
 
+app.get('/admin', (req, res) => {
+  client.query('SELECT * FROM products ORDER BY product_id ASC', (req, data) => {
+    var list = [];
+    for (var i = 0; i < data.rows.length; i++) {
+      list.push(data.rows[i]);
+    }
+    res.render('admin/products', {
+      layout: 'admin',
+      data: list
+    });
+  });
+});
 app.get('/products/:id', (req, res) => {
   client.query('SELECT products.product_id AS product_id, products.product_name AS product_name, products.category_id AS category_id, products.brand_id AS brand_id, products.product_price AS product_price, products.product_description AS product_description, products.brand_tagline AS brand_tagline, products.product_picture AS product_picture, products.warranty AS warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, categories.category_name AS category_name FROM products LEFT JOIN brands ON products.brand_id=brands.brand_id RIGHT JOIN categories ON products.category_id=categories.category_id WHERE products.product_id = ' + req.params.id + ';')
     .then((results) => {
       console.log('results?', results);
-      res.render('productdetail', {
+      res.render('client/productdetail', {
         product_name: results.rows[0].product_name,
         product_description: results.rows[0].product_description,
         brand_tagline: results.rows[0].brand_tagline,
@@ -104,7 +116,7 @@ app.get('/brands', function (req, res) {
   client.query('SELECT * FROM brands ')
     .then((result) => {
       console.log('results?', result);
-      res.render('list_brand', result);
+      res.render('client/list_brand', result);
     })
     .catch((err) => {
       console.log('error', err);
@@ -125,7 +137,7 @@ app.get('/categories', function (req, res) {
   client.query('SELECT * FROM categories')
     .then((result) => {
       console.log('results?', result);
-      res.render('list_category', result);
+      res.render('client/list_category', result);
     })
     .catch((err) => {
       console.log('error', err);
